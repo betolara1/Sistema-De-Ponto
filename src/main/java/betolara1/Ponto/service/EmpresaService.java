@@ -51,7 +51,7 @@ public class EmpresaService {
 
     // Método para buscar produtos por data de criação
     @Transactional(readOnly = true)
-    public Page<EmpresaDTO> getSizeByDateCreated(String dateString, Pageable pageable){
+    public Page<EmpresaDTO> getByDateCreated(String dateString, Pageable pageable){
         // 1. Converte a String para LocalDate (apenas data)
         LocalDate date = DateUtils.parseDate(dateString);
 
@@ -73,7 +73,7 @@ public class EmpresaService {
 
     // Método para buscar produtos por data de atualização
     @Transactional(readOnly = true)
-    public Page<EmpresaDTO> getSizeByDateUpdated(String dateString, Pageable pageable){
+    public Page<EmpresaDTO> getByDateUpdated(String dateString, Pageable pageable){
         // 1. Converte a String para LocalDate (apenas data)
         LocalDate date = DateUtils.parseDate(dateString);
 
@@ -170,5 +170,11 @@ public class EmpresaService {
         log.info("Produto {} foi alterado. ",id);
 
         return updated;
+    }
+
+    public void disable(Long id){
+        Empresa empresa = new Empresa();
+
+        empresa.setIsActive(false);
     }
 }
