@@ -34,7 +34,7 @@ public class EmpresaController {
 
     @SuppressWarnings("null")
     @GetMapping
-    public ResponseEntity<Page<EmpresaDTO>> getAll(@RequestParam(defaultValue="0") int page, 
+    public ResponseEntity<Page<EmpresaDTO>> getAll( @RequestParam(defaultValue="0") int page, 
                                                     @RequestParam(defaultValue="10") int size,
                                                     @RequestParam(defaultValue = "dateCreated") String sortBy,
                                                     @RequestParam(defaultValue = "desc") String direction
@@ -49,7 +49,7 @@ public class EmpresaController {
     }
 
     @GetMapping(params = "active")
-    public ResponseEntity<Page<EmpresaDTO>> getActive(@RequestParam Boolean isActive,
+    public ResponseEntity<Page<EmpresaDTO>> getActive(  @RequestParam Boolean isActive,
                                                         @RequestParam(defaultValue="0") int page, 
                                                         @RequestParam(defaultValue="10") int size,
                                                         @RequestParam(defaultValue = "dateCreated") String sortBy,
@@ -60,11 +60,11 @@ public class EmpresaController {
     }
 
     @GetMapping(params = "dateCreated")
-    public ResponseEntity<Page<EmpresaDTO>> getDateCreated(@RequestParam String dateString,
-                                                                    @RequestParam(defaultValue="0") int page, 
-                                                                    @RequestParam(defaultValue="10") int size,
-                                                                    @RequestParam(defaultValue = "dateCreated") String sortBy,
-                                                                    @RequestParam(defaultValue = "desc") @NonNull String direction
+    public ResponseEntity<Page<EmpresaDTO>> getDateCreated( @RequestParam String dateString,
+                                                            @RequestParam(defaultValue="0") int page, 
+                                                            @RequestParam(defaultValue="10") int size,
+                                                            @RequestParam(defaultValue = "dateCreated") String sortBy,
+                                                            @RequestParam(defaultValue = "desc") @NonNull String direction
     ){
         
         // Chamada estática: Classe.metodo()
@@ -73,11 +73,11 @@ public class EmpresaController {
     }
 
     @GetMapping(params = "dataUpdated")
-    public ResponseEntity<Page<EmpresaDTO>> getDateUpdated(@RequestParam String dateString,                                                 
-                                                                    @RequestParam(defaultValue="0") int page, 
-                                                                    @RequestParam(defaultValue="10") int size,
-                                                                    @RequestParam(defaultValue = "dateCreated") String sortBy,
-                                                                    @RequestParam(defaultValue = "desc") @NonNull String direction
+    public ResponseEntity<Page<EmpresaDTO>> getDateUpdated( @RequestParam String dateString,                                                 
+                                                            @RequestParam(defaultValue="0") int page, 
+                                                            @RequestParam(defaultValue="10") int size,
+                                                            @RequestParam(defaultValue = "dateCreated") String sortBy,
+                                                            @RequestParam(defaultValue = "desc") @NonNull String direction
     ){
         
         // Chamada estática: Classe.metodo()
