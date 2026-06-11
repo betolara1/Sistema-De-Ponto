@@ -107,7 +107,7 @@ Com o servidor rodando, você pode visualizar e interagir com todos os endpoints
 
 ## 📌 Endpoints Atuais (Recursos Implementados)
 
-Atualmente, o recurso de **Empresas** está implementado com os seguintes endpoints sob a rota base `/empresa`:
+Os seguintes recursos e seus respectivos endpoints estão disponíveis:
 
 ### 🏢 Empresas (`/empresa`)
 
@@ -122,7 +122,32 @@ Atualmente, o recurso de **Empresas** está implementado com os seguintes endpoi
 | **GET** | `/empresa?cnpj={cnpj}` | Busca uma empresa pelo CNPJ. | `cnpj` (String) |
 | **POST** | `/empresa` | Cadastra uma nova empresa no sistema. | JSON Body (`SaveEmpresaRequest`) |
 | **PUT** | `/empresa/{id}` | Atualiza os dados de uma empresa existente. | JSON Body (`UpdateEmpresaRequest`), `{id}` |
-| **DELETE**| `/empresa/{id}` | Desativa temporariamente ou remove uma empresa. | `{id}` |
+| **DELETE**| `/empresa/{id}` | Desativa temporariamente (Soft Delete) ou remove uma empresa. | `{id}` |
+
+### 📍 Coordenadas Geográficas (`/coordenadas`)
+
+Permite definir limites e localizações geográficas para as empresas. *Observação: Não expõe endpoint de deleção (DELETE) para preservar o histórico de auditoria.*
+
+| Método | Endpoint | Descrição | Parâmetros de Query / Path |
+| :--- | :--- | :--- | :--- |
+| **GET** | `/coordenadas` | Retorna lista de coordenadas paginada e ordenada. | `page` (padrão 0), `size` (padrão 10), `sortBy` (padrão `dateCreated`), `direction` (padrão `desc`) |
+| **GET** | `/coordenadas/{id}` | Busca as coordenadas geográficas de uma empresa específica. | `{id}` (ID da Empresa, Path variable) |
+| **POST** | `/coordenadas` | Vincula e cadastra novas coordenadas para uma empresa. | JSON Body (`SaveCoordenadasRequest`) |
+| **PUT** | `/coordenadas/{id}` | Atualiza as coordenadas geográficas existentes por ID da coordenada. | JSON Body (`UpdateCoordenadasRequest`), `{id}` (ID da Coordenada, Path variable) |
+
+---
+
+## 🧪 Execução de Testes
+
+O projeto conta com testes unitários e de integração abrangentes para as camadas de Service e Controller dos recursos `Empresa` e `Coordenadas`.
+
+Para rodar todos os testes automatizados da aplicação:
+
+```bash
+./mvnw test
+# No Windows (PowerShell/CMD):
+.\mvnw.cmd test
+```
 
 ---
 
@@ -133,3 +158,4 @@ Atualmente, o recurso de **Empresas** está implementado com os seguintes endpoi
 - [ ] Implementar a lógica de registro de ponto (entradas, saídas, intervalos).
 - [ ] Configurar conexão dedicada a banco de dados em produção (PostgreSQL/MySQL).
 - [ ] Conectar ao Eureka Server de registro de microsserviços.
+
